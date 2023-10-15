@@ -13,6 +13,7 @@ import { Head } from "./Head";
 import { City } from "./City";
 
 export const Experience = () => {
+  const isMobile = window.innerWidth < 768;
   const [scrollPosition, setScrollPosition] = useState(0);
   const pointLightRef = useRef();
   const pointLightRef2 = useRef();
@@ -20,38 +21,6 @@ export const Experience = () => {
     console.log(window.scrollY)
     setScrollPosition(window.scrollY);
   };
-
-  // const data = useScroll();
-
-  // useFrame(() => {
-  //   if (data) {
-  //     const orbitRadius = 2; // Adjust this radius as needed
-  //     const orbitSpeed = 25; // Adjust this speed as needed
-
-  //     const x = orbitRadius * Math.sin(data.offset * orbitSpeed);
-  //     const y = orbitRadius * Math.cos(data.offset * orbitSpeed);
-
-  //     if (pointLightRef.current) {
-  //       pointLightRef.current.position.set(x, y, 1);
-  //     }
-  //   }
-  // });
-
-  // useFrame(() => {
-  //   if (data) {
-  //     const orbitRadius = 2; // Adjust this radius as needed
-  //     const orbitSpeed = 25; // Adjust this speed as needed
-
-  //     const x = orbitRadius * Math.sin(data.offset * orbitSpeed);
-  //     const y = orbitRadius * Math.cos(data.offset * orbitSpeed);
-
-  //     if (pointLightRef2.current) {
-  //       pointLightRef2.current.position.set(-x, -y, 1);
-  //     }
-  //   }
-  // }
-  // );
-
   const updateLightPosition = (e) => {
     // Calculate the normalized mouse coordinates
     const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
@@ -68,9 +37,6 @@ export const Experience = () => {
     if (pointLightRef.current) {
       pointLightRef.current.position.set(x, y, -5);
     }
-    if (pointLightRef2.current) {
-      pointLightRef2.current.position.set(-x, -y, -7);
-    }
   };
 
   useEffect(() => {
@@ -79,10 +45,22 @@ export const Experience = () => {
   }
   );
 
+  useFrame(({ clock }) => {
+    if (pointLightRef2.current) {
+      // You can adjust the oscillation range and speed as needed
+      const oscillationRange = 2;
+      const oscillationSpeed = 1;
+      const minimumIntensity = 1; // Set a minimum intensity value
+
+      const intensity = oscillationRange * Math.sin(clock.elapsedTime * oscillationSpeed) + 5;
+      pointLightRef2.current.intensity = intensity;
+    }
+  });
+
 
   return (
     <>
-      <pointLight position={[0, 0, 1]} intensity={15} ref={pointLightRef} color={
+      {!isMobile && <pointLight position={[0, 0, -5]} intensity={15} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
       }
         castShadow={true}
@@ -90,7 +68,11 @@ export const Experience = () => {
         shadow-mapSize-height={512}
         distance={10}
 
-      />
+      />}
+
+      {isMobile && <pointLight position={[0, 0, -7]} intensity={15} ref={pointLightRef2} color={
+        new THREE.Color(0x57CCE6)
+      } />}
       {/* <OrbitControls /> */}
       {/* <ambientLight intensity={0.2} color={
         new THREE.Color(0xffffff)
