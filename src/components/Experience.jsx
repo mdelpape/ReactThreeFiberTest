@@ -10,6 +10,7 @@ import { GlassesLeft } from "./GlassesLeft";
 import * as THREE from "three";
 import { Overlay } from "./Overlay";
 import { Head } from "./Head";
+import { City } from "./City";
 
 export const Experience = () => {
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -57,7 +58,7 @@ export const Experience = () => {
     const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
 
     // Adjust the scale factor as needed to control the light's movement
-    const scaleFactor = 2;
+    const scaleFactor = 8;
 
     // Apply the scale factor to the mouse coordinates
     const x = mouseX * scaleFactor;
@@ -65,10 +66,10 @@ export const Experience = () => {
 
     // Set the light positions
     if (pointLightRef.current) {
-      pointLightRef.current.position.set(x, y, .2);
+      pointLightRef.current.position.set(x, y, -5);
     }
     if (pointLightRef2.current) {
-      pointLightRef2.current.position.set(-x, -y, .2);
+      pointLightRef2.current.position.set(-x, -y, -7);
     }
   };
 
@@ -81,17 +82,22 @@ export const Experience = () => {
 
   return (
     <>
-      <pointLight position={[0, 0, 1]} intensity={0.01} ref={pointLightRef} color={
+      <pointLight position={[0, 0, 1]} intensity={10} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
-      }/>
-      <ambientLight intensity={0.0} color={
+      }
+        castShadow={true}
+        shadow-mapSize-width={512}
+        shadow-mapSize-height={512}
+      />
+      <OrbitControls />
+      {/* <ambientLight intensity={0.2} color={
         new THREE.Color(0xffffff)
-      }/>
+      }/> */}
       {/* <pointLight position={[0, 0, 1]} intensity={0.01} ref={pointLightRef2} color={
         new THREE.Color(0x00ff00)
       } /> */}
-      <Head />
-      {/* <Stars/> */}
+      {/* <Head /> */}
+      <City />
     </>
   );
 };

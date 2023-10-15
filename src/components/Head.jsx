@@ -23,7 +23,8 @@ export function Head(props) {
 
   return (
     <group {...props} dispose={null}
-      position={[0, 0, 0]}
+      position={[0, 0, -9]}
+      scale={[20, 20, 20]}
     >
       <mesh geometry={nodes.eye_low_L_eyeball_mesh003.geometry} material={
         materials.Head
