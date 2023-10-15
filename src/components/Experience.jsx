@@ -82,14 +82,16 @@ export const Experience = () => {
 
   return (
     <>
-      <pointLight position={[0, 0, 1]} intensity={10} ref={pointLightRef} color={
+      <pointLight position={[0, 0, 1]} intensity={15} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
       }
         castShadow={true}
         shadow-mapSize-width={512}
         shadow-mapSize-height={512}
+        distance={10}
+
       />
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       {/* <ambientLight intensity={0.2} color={
         new THREE.Color(0xffffff)
       }/> */}
