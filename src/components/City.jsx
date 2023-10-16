@@ -6,16 +6,20 @@ Command: npx gltfjsx@6.2.13 public/models/uploads_files_3248566_miniNY.gltf --tr
 Files: public/models/uploads_files_3248566_miniNY.gltf [7.2MB] > uploads_files_3248566_miniNY-transformed.glb [126.42KB] (98%)
 */
 
-import React, { useRef } from 'react'
+import React, { useRef, useMemo } from 'react'
 import { useGLTF } from '@react-three/drei'
 import * as THREE from 'three'
 
 export function City(props) {
+  const isMobile = window.innerWidth < 768;
   const { nodes, materials } = useGLTF('/models/uploads_files_3248566_miniNY-transformed.glb')
 
-  materials.Default = new THREE.MeshPhongMaterial({
-    color: 0xffffff,      // Set the base color to white
-  });
+  const defaultMaterial = useMemo(() => {
+    return new THREE.MeshPhongMaterial({
+      color: 0xffffff, // Set the base color to white
+    });
+  }, []);
+
   return (
     <>
       <group position={[
@@ -28,17 +32,17 @@ export function City(props) {
         >
 
           <mesh geometry={nodes.Plane.geometry} material={
-            materials.Default
+            defaultMaterial
           }
-            castShadow
-            receiveShadow={true}
+            castShadow={isMobile ? false : true}
+            receiveShadow={isMobile ? false : true}
           />
 
 
         </group>
         <mesh position={[0, 0, -8]}>
           <planeGeometry args={[30, 30]} />
-          <meshPhongMaterial color={0x00267E}
+          <meshLambertMaterial color={0x00267E}
             shininess={500}
           />
         </mesh>

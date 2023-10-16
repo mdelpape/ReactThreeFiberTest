@@ -3,10 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, ScrollControls, useScroll, Stars } from "@react-three/drei";
-import { CoffeeShop } from "./Coffee_shop";
-import { Glasses } from "./Glasses";
-import { GlassesRight } from "./GlassesRight";
-import { GlassesLeft } from "./GlassesLeft";
 import * as THREE from "three";
 import { Overlay } from "./Overlay";
 import { Head } from "./Head";
@@ -27,15 +23,16 @@ export const Experience = () => {
     const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
 
     // Adjust the scale factor as needed to control the light's movement
-    const scaleFactor = 8;
+    const scaleFactorx = 12;
+    const scaleFactory = 6;
 
     // Apply the scale factor to the mouse coordinates
-    const x = mouseX * scaleFactor;
-    const y = mouseY * scaleFactor;
+    const x = mouseX * scaleFactorx;
+    const y = mouseY * scaleFactory;
 
     // Set the light positions
     if (pointLightRef.current) {
-      pointLightRef.current.position.set(x, y, -5);
+      pointLightRef.current.position.set(x, y, -7);
     }
   };
 
@@ -60,7 +57,7 @@ export const Experience = () => {
 
   return (
     <>
-      {!isMobile && <pointLight position={[0, 0, -5]} intensity={15} ref={pointLightRef} color={
+      {!isMobile && <pointLight position={[0, 0, -7]} intensity={13} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
       }
         castShadow={true}
@@ -69,18 +66,11 @@ export const Experience = () => {
         distance={10}
 
       />}
+      <ambientLight intensity={0.03} />
 
       {isMobile && <pointLight position={[0, 0, -7]} intensity={15} ref={pointLightRef2} color={
         new THREE.Color(0x57CCE6)
       } />}
-      {/* <OrbitControls /> */}
-      {/* <ambientLight intensity={0.2} color={
-        new THREE.Color(0xffffff)
-      }/> */}
-      {/* <pointLight position={[0, 0, 1]} intensity={0.01} ref={pointLightRef2} color={
-        new THREE.Color(0x00ff00)
-      } /> */}
-      {/* <Head /> */}
       <City />
     </>
   );
