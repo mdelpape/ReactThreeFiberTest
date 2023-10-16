@@ -57,8 +57,9 @@ export const Experience = () => {
 
   return (
     <>
-      {!isMobile && <pointLight position={[0, 0, -7]} intensity={5} ref={pointLightRef} color={
+      {!isMobile && <pointLight position={[0, 0, -7]} intensity={200} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
+        // new THREE.Color(0x57CCE6)
       }
         castShadow={true}
         shadow-mapSize-width={512}
@@ -69,7 +70,7 @@ export const Experience = () => {
       {/* <ambientLight intensity={0.03} /> */}
 
       {isMobile && <pointLight position={[0, 0, -7]} intensity={15} ref={pointLightRef2} color={
-        new THREE.Color(0x57CCE6)
+        new THREE.Color(0xfffffff)
       } />}
       {/* <City /> */}
       <Head />

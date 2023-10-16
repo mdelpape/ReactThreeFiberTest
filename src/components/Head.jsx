@@ -14,10 +14,10 @@ export function Head(props) {
   const { nodes, materials } = useGLTF('/models/free_head-transformed.glb')
 
   materials.Head = new THREE.MeshPhongMaterial({
-    color: 0xffffff,      // Set the base color to white
+    color: 0xB50000,      // Set the base color to white
     specular: 0x11111,   // Set a subtle specular color
     shininess: 10000,        // Reduce the shininess for a smoother look
-    reflectivity: 1.6,    // Increase the reflectivity for a glossy effect
+    // reflectivity: 200,    // Increase the reflectivity for a glossy effect
     combine: THREE.MixOperation, // Mix the base color with the environment map
   });
 
