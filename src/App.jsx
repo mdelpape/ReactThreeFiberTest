@@ -7,15 +7,20 @@ import { Experience } from "./components/Experience";
 function App() {
   const isMobile = window.innerWidth < 768;
   return (
-    <Canvas
-      shadows = {isMobile ? false : true}
-      camera={{ position: [0, 0, .5], fov: 60 }}
-    >
-      {/* <ScrollControls pages={10} damping={0.15} infinite={true}>
-      </ScrollControls> */}
-
-      <Experience />
-    </Canvas>
+    <>
+      <Canvas
+        shadows={isMobile ? false : true}
+        camera={{ position: [0, 0, .5], fov: 60 }}
+      >
+        <Experience />
+      </Canvas>
+      {/* <form className='form-container'>
+        <div className="input-container">
+          <input type="text" placeholder="Type something..." className="input" />
+        </div>
+        <btn className="btn">Submit</btn>
+      </form> */}
+    </>
   );
 }
 

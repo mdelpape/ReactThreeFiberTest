@@ -32,7 +32,7 @@ export const Experience = () => {
 
     // Set the light positions
     if (pointLightRef.current) {
-      pointLightRef.current.position.set(x, y, -7);
+      pointLightRef.current.position.set(x, y, -9);
     }
   };
 
@@ -57,21 +57,22 @@ export const Experience = () => {
 
   return (
     <>
-      {!isMobile && <pointLight position={[0, 0, -7]} intensity={13} ref={pointLightRef} color={
+      {!isMobile && <pointLight position={[0, 0, -7]} intensity={5} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
       }
         castShadow={true}
         shadow-mapSize-width={512}
         shadow-mapSize-height={512}
-        distance={10}
+        distance={100}
 
       />}
-      <ambientLight intensity={0.03} />
+      {/* <ambientLight intensity={0.03} /> */}
 
       {isMobile && <pointLight position={[0, 0, -7]} intensity={15} ref={pointLightRef2} color={
         new THREE.Color(0x57CCE6)
       } />}
-      <City />
+      {/* <City /> */}
+      <Head />
     </>
   );
 };

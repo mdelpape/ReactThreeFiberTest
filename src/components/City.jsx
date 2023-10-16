@@ -42,8 +42,8 @@ export function City(props) {
         </group>
         <mesh position={[0, 0, -8]}>
           <planeGeometry args={[30, 30]} />
-          <meshLambertMaterial color={0x00267E}
-            shininess={500}
+          <meshPhongMaterial color={0xD30501}
+            shininess={200}
           />
         </mesh>
       </group>

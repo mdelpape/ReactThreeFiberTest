@@ -13,3 +13,51 @@
 body {
   overflow: hidden;
 }
+
+.input-container {
+  width: 100%;
+  height: 50px;
+  background-color: #bdbdbdc1;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: #000;
+}
+
+.btn {
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+  height: 50px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  background-color: #bdbdbdc1;
+  border: none;
+  border-radius: 50%;
+  padding: 2px;
+  color: #000;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.form-container {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex; /* Make it a flex container */
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  width: 50%;
+  gap: 20px;
+}
