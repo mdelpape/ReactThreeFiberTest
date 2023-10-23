@@ -16,7 +16,7 @@ export function City(props) {
 
   const defaultMaterial = useMemo(() => {
     return new THREE.MeshPhongMaterial({
-      color: 0xffffff, // Set the base color to white
+      color: 0x840D00, // Set the base color to white
     });
   }, []);
 
@@ -42,8 +42,8 @@ export function City(props) {
         </group>
         <mesh position={[0, 0, -8]}>
           <planeGeometry args={[30, 30]} />
-          <meshPhongMaterial color={0xD30501}
-            shininess={200}
+          <meshPhongMaterial color={0x840D00}
+            shininess={1000}
           />
         </mesh>
       </group>
