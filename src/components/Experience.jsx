@@ -69,7 +69,7 @@ export const Experience = () => {
       />}
       <ambientLight intensity={0.5} />
 
-      {isMobile && <pointLight position={[0, 0, -3]} intensity={20} ref={pointLightRef2} color={
+      {isMobile && <pointLight position={[0, 0, -3]} intensity={700} ref={pointLightRef2} color={
         new THREE.Color(0xfffffff)
       } />}
       <City />
