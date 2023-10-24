@@ -32,7 +32,7 @@ export const Experience = () => {
 
     // Set the light positions
     if (pointLightRef.current) {
-      pointLightRef.current.position.set(x, y, -5);
+      pointLightRef.current.position.set(x, y, -6);
     }
   };
 
@@ -45,11 +45,11 @@ export const Experience = () => {
   useFrame(({ clock }) => {
     if (pointLightRef2.current) {
       // You can adjust the oscillation range and speed as needed
-      const oscillationRange = 2;
-      const oscillationSpeed = 1;
+      const oscillationRange = 5;
+      const oscillationSpeed = 2;
       const minimumIntensity = 1; // Set a minimum intensity value
 
-      const intensity = oscillationRange * Math.sin(clock.elapsedTime * oscillationSpeed) + 5;
+      const intensity = oscillationRange * Math.sin(clock.elapsedTime * oscillationSpeed) + 20;
       pointLightRef2.current.intensity = intensity;
     }
   });
@@ -57,7 +57,7 @@ export const Experience = () => {
 
   return (
     <>
-      {!isMobile && <pointLight position={[0, 0, -5]} intensity={700} ref={pointLightRef} color={
+      {!isMobile && <pointLight position={[0, 0, -5]} intensity={400} ref={pointLightRef} color={
         new THREE.Color(0x57CCE6)
         // new THREE.Color(0x57CCE6)
       }
@@ -69,7 +69,7 @@ export const Experience = () => {
       />}
       <ambientLight intensity={0.5} />
 
-      {isMobile && <pointLight position={[0, 0, -3]} intensity={700} ref={pointLightRef2} color={
+      {isMobile && <pointLight position={[0, 0, -5]} intensity={700} ref={pointLightRef2} color={
         new THREE.Color(0xfffffff)
       } />}
       <City />
